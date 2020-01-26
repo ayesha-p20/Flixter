@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
         AsyncHttpClient client = new AsyncHttpClient();
+
         client.get(Now_Playing_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {  //using JSON bec movie db uses it too
@@ -72,6 +73,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //widget variables referenced using IDs defined in xml file
     }
 }
