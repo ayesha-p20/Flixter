@@ -45,7 +45,7 @@ public class DetailActivity extends YouTubeBaseActivity {
         releaseDate = findViewById(R.id.releaseDate);
         youTubePlayerView = findViewById(R.id.player);
 
-        Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
+        final Movie movie = Parcels.unwrap(getIntent().getParcelableExtra("movie"));
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
         ratingBar.setRating((float) movie.getRating());
@@ -65,7 +65,13 @@ public class DetailActivity extends YouTubeBaseActivity {
 
                     String youtubeKey = results.getJSONObject(0).getString("key"); //obtaining key of the 0th element (official trailer2) in results array
                     Log.d("DetailActivity", youtubeKey);  //want to use key in cue method
-                    initializeYoutube(youtubeKey); //if key extracted successfully, pass it to method that plays video
+
+                    if (movie.getRating() <= 5.0) {
+                        initializeYoutube(youtubeKey); //if key extracted successfully, pass it to method that plays video
+                    }
+                    else{
+                        instantInitializeYoutube(youtubeKey);
+                    }
                 } catch (JSONException e) {
                     Log.e("DetailActivity", "Failed to parse jason");
 
@@ -80,12 +86,28 @@ public class DetailActivity extends YouTubeBaseActivity {
 
     }
 
+    private void instantInitializeYoutube(final String youtubeKey) {
+        youTubePlayerView.initialize(YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+                Log.d("DetailActivity", "onInitializationSuccess");
+                youTubePlayer.loadVideo(youtubeKey);
+            }
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+                Log.d("DetailActivity", "onInitializationFailure");
+            }
+        });
+
+    }
+
     private void initializeYoutube(final String youtubeKey) {
         youTubePlayerView.initialize(YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("DetailActivity", "onInitializationSuccess");
-                //video plays as soon as detail activity opens
+                //video doesn't play automatically
+
                 youTubePlayer.cueVideo(youtubeKey); //argument should be video that needs to be played
             }
 
