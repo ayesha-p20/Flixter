@@ -65,6 +65,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
+        ImageView play_icon;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
@@ -73,12 +74,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             container = itemView.findViewById(R.id.container);
+            play_icon = itemView.findViewById(R.id.play_icon);
         }
 
         public void bind(final Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+            if(movie.getRating() > 5.0){
+                play_icon.setVisibility(View.VISIBLE);
+            }
+            else{
+                play_icon.setVisibility(View.INVISIBLE);
+            }
+
             //1. register click on whole row
 
             container.setOnClickListener(new View.OnClickListener() {
