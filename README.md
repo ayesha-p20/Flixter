@@ -27,10 +27,11 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 `TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
 
-<img src="https://i.imgur.com/fT8loJp.mp4" width=250><br>
+<img src="https://i.imgur.com/4piz2oW.gif" width=250><br>
 
 ### Notes
-I didn't really face any major challenges while creating this app. However, my understanding of fetching data from an API improved. I also added stretch stories that I found interesting and improved the UI.
+
+Describe any challenges encountered while building the app.
 
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
@@ -52,7 +53,7 @@ I didn't really face any major challenges while creating this app. However, my u
 - [ ] (2pts) For popular movies (i.e. a movie voted for more than 5 stars), the full backdrop image is displayed. Otherwise, a poster image, the movie title, and overview is listed. Use Heterogenous RecyclerViews and use different ViewHolder layout files for popular movies and less popular ones.
 
 ### App Walkthough GIF
-<img src="https://i.imgur.com/RfjF4Db.gif" width=250><br>
+<img src="https://i.imgur.com/nuhKQtd.gif" width=250><br>
 
 ### Notes
 Describe any challenges encountered while buil
