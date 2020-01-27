@@ -49,7 +49,7 @@ public class DetailActivity extends YouTubeBaseActivity {
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
         ratingBar.setRating((float) movie.getRating());
-        tvLanguage.setText("Language(s): " + movie.getLanguage());
+        tvLanguage.setText("Original Language(s): " + movie.getLanguage());
         releaseDate.setText("Release Date: " + movie.getDate());
 
         AsyncHttpClient client = new AsyncHttpClient();

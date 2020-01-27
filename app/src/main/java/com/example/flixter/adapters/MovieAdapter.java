@@ -81,7 +81,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
-            if(movie.getRating() > 5.0){
+            if(movie.getRating() > 5.0){               //display icon only if rating > 5
                 play_icon.setVisibility(View.VISIBLE);
             }
             else{
